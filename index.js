@@ -26,13 +26,28 @@ app.get("/", function (req, res) {
 });
 
 app.get("/all", (req, res) => {
-	const sql = "SELECT phone FROM users";
+	const sql = "SELECT * FROM users";
 	db.query(sql, (err, rows) => {
 		if (err) {
 			res.send({ success: false, message: "Could not connect to db" });
 		} else {
-			const result = rows.map((item) => item.phone);
-			res.send(JSON.stringify(result));
+			let result = rows.map((item) => item.phone);
+
+			fetch("https://example.com/profile", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(result),
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					console.log("Success:", data);
+				})
+				.catch((error) => {
+					console.error("Error:", error);
+				});
+			//res.send(JSON.stringify(result));
 		}
 	});
 });

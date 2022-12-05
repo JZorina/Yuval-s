@@ -1,15 +1,18 @@
 {
-  "name": "yuvals",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2",
-    "mysql": "^2.18.1"
-  }
+	"name": "yuvals",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"deploy": "npm run build && gh-pages -d dist"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.18.2",
+		"mysql": "^2.18.1"
+	},
+	"devDependencies": {
+		"gh-pages": "^4.0.0"
+	}
 }
